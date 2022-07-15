@@ -3,7 +3,8 @@
 
 #include <QObject>
 
-#include <QMainWindow>
+#include "driver.h"
+#include "Windows.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class mouse; }

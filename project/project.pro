@@ -11,12 +11,10 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    driver.cpp \
-    mouse.cpp
+    driver.cpp
 
 HEADERS += \
-    driver.h \
-    mouse.h
+    driver.h
 
 FORMS += \
     driver.ui

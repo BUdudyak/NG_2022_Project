@@ -1,9 +1,9 @@
 #include "mouse.h"
-#include "ui_mouse.h"
 
-mouse::mouse(QObject *parent)
+mouse::mouse()
 {
-    ui->setupUi(this);
+    m_press = 0;
+    m_release = 0;
 }
 
 void mouse::pressMouseButton()
