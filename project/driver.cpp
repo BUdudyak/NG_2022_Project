@@ -7,7 +7,7 @@ driver::driver(QWidget *parent)
     , m_gamepad(0)
 {
     ui->setupUi(this);
-    ui->l_connection->setReadOnly(true);
+    //ui->l_connection->setReadOnly(true);
 
     m_gamepad = new QGamepad;
 

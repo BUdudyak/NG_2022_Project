@@ -14,15 +14,51 @@
    <string>driver</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="l_connection">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>30</y>
-      <width>104</width>
-      <height>71</height>
+      <x>230</x>
+      <y>120</y>
+      <width>74</width>
+      <height>42</height>
      </rect>
     </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="l_connection">
+       <property name="text">
+        <string>Disconnected</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="l_LB">
+         <property name="text">
+          <string>LB</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="l_RB">
+         <property name="text">
+          <string>RB</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
