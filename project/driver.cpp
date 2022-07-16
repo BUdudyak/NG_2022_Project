@@ -16,12 +16,12 @@ driver::driver(QWidget *parent)
     m_cursorSensitivity = 20;
 
     connect(m_gamepad, &QGamepad::connectedChanged, this, &driver::showConnectionStatus);
-    connect(m_gamepad, &QGamepad::buttonL1Changed, this, &driver::pressMouseButton);
-    connect(m_gamepad, &QGamepad::buttonR1Changed, this, &driver::pressMouseButton);
-    connect(m_gamepad, &QGamepad::buttonAChanged, this, &driver::pressMouseButton);
-    connect(m_gamepad, &QGamepad::buttonBChanged, this, &driver::pressMouseButton);
-    connect(m_gamepad, &QGamepad::buttonXChanged, this, &driver::pressMouseButton);
-    connect(m_gamepad, &QGamepad::buttonYChanged, this, &driver::pressMouseButton);
+    connect(m_gamepad, &QGamepad::buttonL1Changed, this, &driver::pressButton);
+    connect(m_gamepad, &QGamepad::buttonR1Changed, this, &driver::pressButton);
+    connect(m_gamepad, &QGamepad::buttonAChanged, this, &driver::pressButton);
+    connect(m_gamepad, &QGamepad::buttonBChanged, this, &driver::pressButton);
+    connect(m_gamepad, &QGamepad::buttonXChanged, this, &driver::pressButton);
+    connect(m_gamepad, &QGamepad::buttonYChanged, this, &driver::pressButton);
 
     connect(m_gamepad, &QGamepad::axisLeftXChanged, this, &driver::changeCursorPos);
     connect(m_gamepad, &QGamepad::axisLeftYChanged, this, &driver::changeCursorPos);
@@ -48,29 +48,11 @@ void driver::showConnectionStatus()
     }
 }
 
-void driver::pressMouseButton()
+void driver::pressButton()
 {
-    QGamepad *gamepad = (QGamepad*)sender();
-    bool buttonPressed = false;
+    drawButtons();
 
-    if(gamepad->buttonL1())
-    {
-        buttonPressed = gamepad->buttonL1();
-        m_press = LEFTDOWN;
-        m_release = LEFTUP;
-    }
-    if(gamepad->buttonR1())
-    {
-        buttonPressed = gamepad->buttonR1();
-        m_press = RIGHTDOWN;
-        m_release = RIGHTUP;
-    }
-    if(gamepad->buttonA())
-    {
-        buttonPressed = gamepad->buttonA();
-        m_press = MIDDLEDOWN;
-        m_release = MIDDLEUP;
-    }
+    bool buttonPressed = checkButtonsStatus();
 
     if(buttonPressed == true)
     {
@@ -80,7 +62,6 @@ void driver::pressMouseButton()
     {
         mouse_event(m_release, QCursor::pos().x(), QCursor::pos().y(), 0, 0);
     }
-    checkButtonsStatus();
 }
 
 void driver::changeCursorPos()
@@ -92,7 +73,7 @@ void driver::changeCursorPos()
     ui->s_axisY->setValue(qRound(m_gamepad->axisLeftY()*100));
 }
 
-void driver::checkButtonsStatus()
+void driver::drawButtons()
 {
     QString pressed = "background-color: rgb(125, 125, 126);\ncolor: rgb(255, 255, 255)";
     QString released = "background-color: rgb(240, 240, 240);\ncolor: rgb(0, 0, 0)";
@@ -108,4 +89,41 @@ void driver::checkButtonsStatus()
 void driver::changeSensitivity()
 {
     m_cursorSensitivity = ui->s_mouseSens->value();
+}
+
+bool driver::checkButtonsStatus()
+{
+    bool buttonPressed = false;
+
+    if(m_gamepad->buttonB() && m_gamepad->buttonX())
+    {
+        system("start explorer");
+    }
+    else if(m_gamepad->buttonB() && m_gamepad->buttonY())
+    {
+        system("start chrome");
+    }
+    else if(m_gamepad->buttonX() && m_gamepad->buttonY())
+    {
+        system("start C:\\Users\\User\\Pictures\\_720_2147418549_Trim_Trim.mp4");
+    }
+    else if(m_gamepad->buttonL1())
+    {
+        buttonPressed = m_gamepad->buttonL1();
+        m_press = LEFTDOWN;
+        m_release = LEFTUP;
+    }
+    else if(m_gamepad->buttonR1())
+    {
+        buttonPressed = m_gamepad->buttonR1();
+        m_press = RIGHTDOWN;
+        m_release = RIGHTUP;
+    }
+    else if(m_gamepad->buttonA())
+    {
+        buttonPressed = m_gamepad->buttonA();
+        m_press = MIDDLEDOWN;
+        m_release = MIDDLEUP;
+    }
+    return buttonPressed;
 }

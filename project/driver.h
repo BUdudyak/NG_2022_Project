@@ -40,10 +40,11 @@ public:
 
 public slots:
     void showConnectionStatus();
-    void pressMouseButton();
+    void pressButton();
     void changeCursorPos();
-    void checkButtonsStatus();
+    void drawButtons();
     void changeSensitivity();
+    bool checkButtonsStatus();
 
 private:
     Ui::driver *ui;
