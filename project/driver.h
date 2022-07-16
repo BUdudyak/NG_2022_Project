@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 
-#include <QtGamepad/QGamepadManager>
 #include <QGamepad>
 #include <QObject>
 #include <QCursor>
@@ -11,6 +10,7 @@
 #include <QWidget>
 #include <QEvent>
 #include <QCloseEvent>
+#include <QDebug>
 
 #include "windows.h"
 
@@ -41,17 +41,20 @@ public:
 public slots:
     void showConnectionStatus();
     void pressMouseButton();
-    void cursorMove(QMouseEvent *event);
-    void mousePress(QMouseEvent *event);
+    void changeCursorPos();
+    void checkButtonsStatus();
+    void changeSensitivity();
 
 private:
     Ui::driver *ui;
-    QGamepad* m_gamepad;
-    QCursor* m_cursorEvent;
+    QGamepad *m_gamepad;
+    QCursor *m_cursorEvent;
 
     QPoint cursorPosition;
     int m_press;
     int m_release;
+    int m_wheelSensitivity;
+    int m_cursorSensitivity;
 
 };
 #endif // DRIVER_H
