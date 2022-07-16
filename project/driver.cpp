@@ -101,7 +101,7 @@ bool driver::checkButtonsStatus()
     }
     else if(m_gamepad->buttonB() && m_gamepad->buttonY())
     {
-        system("start chrome");
+        system("start steam://rungameid/570");
     }
     else if(m_gamepad->buttonX() && m_gamepad->buttonY())
     {
