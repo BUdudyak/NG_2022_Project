@@ -5,7 +5,13 @@
 
 #include <QtGamepad/QGamepadManager>
 #include <QGamepad>
+#include <QObject>
 #include <QCursor>
+#include <QPoint>
+#include <QWidget>
+#include <QEvent>
+#include <QCloseEvent>
+
 #include "windows.h"
 
 QT_BEGIN_NAMESPACE
@@ -35,12 +41,15 @@ public:
 public slots:
     void showConnectionStatus();
     void pressMouseButton();
+    void cursorMove(QMouseEvent *event);
+    void mousePress(QMouseEvent *event);
 
 private:
     Ui::driver *ui;
     QGamepad* m_gamepad;
     QCursor* m_cursorEvent;
 
+    QPoint cursorPosition;
     int m_press;
     int m_release;
 

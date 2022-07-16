@@ -8,7 +8,7 @@ driver::driver(QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle("Gamepad Driver for XBox");
-    //ui->l_connection->setReadOnly(true);
+
 
     m_press = 0;
     m_release = 0;
@@ -82,5 +82,15 @@ void driver::pressMouseButton()
         ui->l_X->setStyleSheet("background-color: rgb(32, 33, 34);\ncolor: rgb(255, 255, 255)");
         ui->l_Y->setStyleSheet("background-color: rgb(32, 33, 34);\ncolor: rgb(255, 255, 255)");
     }
+}
+
+void driver::cursorMove(QMouseEvent *event)
+{
+
+}
+
+void driver::mousePress(QMouseEvent *event)
+{
+    cursorPosition  = event->pos();
 }
 
