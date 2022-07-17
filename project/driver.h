@@ -5,7 +5,6 @@
 
 #include <QGamepad>
 #include <QObject>
-#include <QCursor>
 #include <QPoint>
 #include <QWidget>
 #include <QEvent>
@@ -49,7 +48,6 @@ public slots:
 private:
     Ui::driver *ui;
     QGamepad *m_gamepad;
-    QCursor *m_cursorEvent;
 
     QPoint cursorPosition;
     int m_press;

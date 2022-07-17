@@ -7,7 +7,6 @@ driver::driver(QWidget *parent)
     , m_gamepad(0)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Gamepad Driver for XBox");
     ui->l_connection->setStyleSheet("color: red");
 
     m_press = 0;
